@@ -39,7 +39,11 @@ $disappearDelay: 50;
         -webkit-animation-fill-mode: forwards;          
     }                             
                   
-    // Generate keyframes
+    // Generate keyframes                    
+    // ======================
+    // Sass interpolation doesn't work with keyframe. CF : https://github.com/nex3/sass/issues/46
+    // so I use a tricks ==> "appear-'#{$i}'" - And it doesn't work in Firefox.
+    
     @-webkit-keyframes "appear-'#{$i}'" { 
         0% {
            -webkit-transform:translate3d(0, 0, 0px)  rotateZ(270deg);        
