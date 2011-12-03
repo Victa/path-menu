@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Path menu in pure CSS3</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/app.css" />
+</head>
+<body>                    
+    <section id="main">
+        <h1>Path menu in pure CSS3</h1>     
+        <p>I'm fall in love with the new UI of <a href="http://path.com">Path</a>. I really love the user interaction design
+            like the "add menu". So, as I'm a front-end developer, I tried to recreate the same thing on my browser.</p>
+        <p>Firstly, I posted a video of the effect on <a href="http://dribbble.com/shots/339001-Path-menu-recreated-in-css3">dribbble</A> and now, I share my code.</p>  
+        <h2>An experiment in CSS</h2>
+        <p>I made the choice to do this with only html/css3 and no images whatsoever.<br>
+            There is <strong>0 line of javascript</strong>.<br>
+        I'm aware that you can do the same with a bit of javascript to be compliant with others browsers. But, It was not my goal :)</p>
+        <h2>How was this made?</h2>
+        <p>To calculate the coordinates of items and generate the animation, I used Sass+Compass.<br>
+            I used a math formula in order to add the items's position on the arc of circle. So, you can add or remove items without rewrite the code.<br>
+            Finally, I generate a keyframe animation for each item. To be honnest, I had a lot of problems to use keyframes and Sass.
+            It's for this reason, that it's only compliant with Webkit.</p>
+        <p>You can fork <strong><a href="http://github.com/victa/path-menu">the source</a></strong> on github !</p>  
+        <p><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="_victa">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></p>
+        <hr />
+        <p>Follow <a href="http://twitter.com/_victa">me</a> on Twitter! And ask any questions you want or send comments.</p>   
+        <p><small><strong>Note:</strong> This only works in Webkit (better result in Safari).</small></p>
+    </section>    
+    
+    <input type="checkbox" id="menu" class="menuControl" checked="checked">  <!-- Hidden -->
+    <label for="menu">
+        <div class="circle-container">
+            <button class="circle">&#10006;</button>
+        </div>
+    </label>  
+    <ul class="items">
+      <li>&#9733;</li>
+      <li>&#9733;</li>
+      <li>&#9733;</li>
+      <li>&#9733;</li>
+      <li>&#9733;</li>
+      <li>&#9733;</li>         
+    </ul>    
+</body>
+</html>

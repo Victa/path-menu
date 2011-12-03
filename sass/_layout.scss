@@ -1,0 +1,78 @@
+// General
+body{ 
+    background:whiteSmoke;
+    font:13px/18px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    font-smoothing:antialiased;
+    font-weight:400;
+    color:#333;  
+    text-shadow:0 1px 0 white;
+}    
+#main {width:600px;margin:12px 0 0 300px;}
+h1,h2{font-size:24px;margin-bottom:16px;color: #3A3A3A;line-height: 1.4;font-weight: bold;}
+h2{font-size:16px;padding-top:8px;}     
+p,h2{margin-bottom:8px;}             
+p:last-of-type{margin-top:-6px;}
+small{font-size: 86.7%;color:#9C9A9A;} 
+hr{height:0px;border:0px;border-top:1px solid #CCC;border-bottom:1px solid white;background:transparent;margin:24px 0;}
+a,a:visited { color: #84B9D3;font-weight:bold;text-decoration:none; }
+a:hover { text-decoration:underline; }
+strong{font-weight:bold;}          
+                    
+// Label + checkbox tricks
+#menu{display:none;}                                                  
+#menu:checked ~ label .circle {
+    @include transform(rotate(0deg));   
+}      
+
+
+// Red button
+.circle-container {
+    position:fixed;bottom:10px;left:10px;height:40px;width:40px;
+    @include box-shadow(0 0 10px rgba(0,0,0,0.7));
+    @include border-radius(20px);
+    .circle {
+        position:fixed;bottom:10px;left:10px;
+        height:40px;width:40px;
+        cursor:pointer;
+        z-index:2;      
+        border:0px;
+        font-size:30px;
+        line-height:40px;
+        text-align:center;
+        color:white;       
+        padding:0px;
+        @include transition(all .2s linear);
+        @include linear-gradient(color-stops(#e85738, #cb2c16));            
+        @include box-shadow(0 0 0 4px white, 0 0 0 5px rgba(0,0,0,0.3));       
+        @include border-radius(20px);     
+        @include transform-style(preserve-3d);     
+        @include appearance(none);   
+        @include transform(rotate(45deg)); 
+        &:active:before{
+           content:"";    
+           display:block;
+           position:absolute;
+           top:-5px;left:-5px;right:-5px;bottom:-5px;
+           background:rgba(0,0,0,0.3);
+           pointer-events:none;
+           @include border-radius(25px);    
+        }
+    }
+}    
+   
+// Items               
+.items li {
+    position:fixed;
+    bottom:20px;left:20px;
+    display:block;
+    height:26px;width:26px;
+    color:white;
+    text-align:center;
+    line-height:26px;
+    font-size:18px;
+    @include box-shadow(0 0 0 4px white, 0 0 0 5px rgba(0,0,0,0.3), inset 0 0 1px black);
+    @include linear-gradient(color-stops(#433f3c, #44403d));                
+    @include border-radius(13px);     
+    @include transform-style(preserve-3d);   
+}               

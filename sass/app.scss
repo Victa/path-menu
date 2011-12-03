@@ -1,0 +1,76 @@
+@import "compass/reset","compass/css3";        
+@import "layout";
+
+// ============== Vars =====================
+$items: 6; // number of items
+$arc: 90;  // arc of the circle
+$angle: $arc/$items;  // angle between items
+$space:170; // a value in pixel. It's the space between the red circle and the items
+$circleCenterX: 30;  // the X coord of the red  circle center 
+$circleCenterY: 30;  // the Y coord of the red  circle center 
+$disappearDelay: 50;    
+
+// Generate items position + keyframes animation
+@for $i from 1 through $items {                         
+    // I'm not really good in math, so I suppose that they have a better way to calcul coordinates :)
+    $rad: ( $angle * ($i - 1) + $angle/2 ) * (pi()/180);
+    $x:round(($circleCenterX + $space) * cos($rad) );
+    $y:round(-($circleCenterY + $space) * sin($rad) );   
+                            
+    // Coords for the rebound during the animation
+    $xm: round($x * 1.15);
+    $ym: round($y * 1.15);                           
+    
+    $disappearDelay: $disappearDelay * 1.35;
+     
+    // CSS checkbox + label tricks
+    #menu:checked ~ .items li:nth-child(#{$i}) {
+         -webkit-animation-name: "appear-'#{$i}'";
+         -webkit-animation-duration: 240ms;
+         -webkit-animation-iteration-count: 1;
+         -webkit-animation-fill-mode: forwards; 
+         -webkit-animation-delay: (20 * $i)+ms;         
+    }       
+    
+    #menu:not(:checked) ~ .items li:nth-child(#{$i}) {
+        -webkit-animation-name: "disappear-'#{$i}'";
+        -webkit-animation-duration: (320 + $disappearDelay)+ms;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-fill-mode: forwards;          
+    }                             
+                  
+    // Generate keyframes
+    @-webkit-keyframes "appear-'#{$i}'" { 
+        0% {
+           -webkit-transform:translate3d(0, 0, 0px)  rotateZ(270deg);        
+           -webkit-animation-timing-function:cubic-bezier(1,.6,.57,.75);
+        }             
+        80% {
+            -webkit-animation-timing-function:cubic-bezier(.45,.97,.51,.78);
+            -webkit-transform:translate3d($xm+px, $ym+px,0px) rotateZ(0deg); 
+        }
+        100% {
+            -webkit-transform:translate3d($x+px, $y+px,0px);      
+        }
+    }          
+    
+    @-webkit-keyframes "disappear-'#{$i}'" { 
+        0% {
+            -webkit-transform:translate3d($x+px, $y+px,0px) rotateZ(0deg);
+            -webkit-animation-timing-function:cubic-bezier(1,.6,.57,.75);
+        }                                          
+        70% {                                                          
+            -webkit-transform:translate3d($xm+px, $ym+px,0px) rotateZ(360deg);
+            -webkit-animation-timing-function:cubic-bezier(.45,.97,.51,.78)
+        }
+        100% {
+           -webkit-transform:translate3d(0,0,0px) rotateZ(540deg);        
+        }
+    }     
+          
+}        
+
+
+    
+ 
+
