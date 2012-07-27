@@ -25,53 +25,50 @@ $disappearDelay: 50;
      
     // CSS checkbox + label tricks
     #menu:checked ~ .items li:nth-child(#{$i}) {
-         -webkit-animation-name: "appear-'#{$i}'";
-         -webkit-animation-duration: 240ms;
-         -webkit-animation-iteration-count: 1;
-         -webkit-animation-fill-mode: forwards; 
-         -webkit-animation-delay: (20 * $i)+ms;         
+        @include  animation-name(appear-#{$i});
+        @include  animation-duration(240ms);
+        @include  animation-iteration-count(1);
+        @include  animation-fill-mode(forwards); 
+        @include  animation-delay((20 * $i)+ms);         
     }       
     
     #menu:not(:checked) ~ .items li:nth-child(#{$i}) {
-        -webkit-animation-name: "disappear-'#{$i}'";
-        -webkit-animation-duration: (320 + $disappearDelay)+ms;
-        -webkit-animation-iteration-count: 1;
-        -webkit-animation-fill-mode: forwards;          
+        @include  animation-name(disappear-#{$i});
+        @include  animation-duration((320 + $disappearDelay)+ms);
+        @include  animation-iteration-count(1);
+        @include  animation-fill-mode(forwards);          
     }                             
                   
-    // Generate keyframes                    
-    // ======================
-    // Sass interpolation doesn't work with keyframe. CF : https://github.com/nex3/sass/issues/46
-    // so I use a tricks ==> "appear-'#{$i}'" - And it doesn't work in Firefox.
+    // Generating keyframes                    
     
-    @-webkit-keyframes "appear-'#{$i}'" { 
+    @include keyframes(appear-#{$i}) {
         0% {
-           -webkit-transform:translate3d(0, 0, 0px)  rotateZ(270deg);        
-           -webkit-animation-timing-function:cubic-bezier(1,.6,.57,.75);
+           @include transform(translate3d(0, 0, 0px)  rotateZ(270deg));        
+           @include  animation-timing-function(cubic-bezier(1,.6,.57,.75));
         }             
         80% {
-            -webkit-animation-timing-function:cubic-bezier(.45,.97,.51,.78);
-            -webkit-transform:translate3d($xm+px, $ym+px,0px) rotateZ(0deg); 
+            @include  animation-timing-function(cubic-bezier(.45,.97,.51,.78));
+            @include transform(translate3d($xm+px, $ym+px,0px) rotateZ(0deg)); 
         }
         100% {
-            -webkit-transform:translate3d($x+px, $y+px,0px);      
+            @include transform(translate3d($x+px, $y+px,0px));      
         }
-    }          
+    }
     
-    @-webkit-keyframes "disappear-'#{$i}'" { 
+    @include keyframes(disappear-#{$i}) {
         0% {
-            -webkit-transform:translate3d($x+px, $y+px,0px) rotateZ(0deg);
-            -webkit-animation-timing-function:cubic-bezier(1,.6,.57,.75);
+            @include transform(translate3d($x+px, $y+px,0px) rotateZ(0deg));
+            @include  animation-timing-function(cubic-bezier(1,.6,.57,.75));
         }                                          
         70% {                                                          
-            -webkit-transform:translate3d($xm+px, $ym+px,0px) rotateZ(360deg);
-            -webkit-animation-timing-function:cubic-bezier(.45,.97,.51,.78)
+            @include transform(translate3d($xm+px, $ym+px,0px) rotateZ(360deg));
+            @include  animation-timing-function(cubic-bezier(.45,.97,.51,.78));
         }
         100% {
-           -webkit-transform:translate3d(0,0,0px) rotateZ(540deg);        
+            @include transform(translate3d(0,0,0px) rotateZ(540deg));        
         }
     }     
-          
+
 }        
 
 

@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/firefox.css" />
 </head>
 <body>                    
+  
     <section id="main">
         <h1>Path menu in pure CSS3</h1>     
         <p>I'm fall in love with the new UI of <a href="http://path.com">Path</a>. I really love the user interaction design
@@ -21,13 +22,13 @@
         <h2>How was this made?</h2>
         <p>To calculate the coordinates of items and generate the animation, I used Sass+Compass.<br>
             I used a math formula in order to add the items's position on the arc of circle. So, you can add or remove items without rewrite the code.<br>
-            Finally, I generate a keyframe animation for each item. To be honnest, I had a lot of problems to use keyframes and Sass.
-            It's for this reason, that it's only compliant with Webkit.</p>
+            Finally, I generate a keyframe animation for each item. <del>To be honnest, I had a lot of problems to use keyframes and Sass.
+            It's for this reason, that it's only compliant with Webkit.</del></p>
         <p>You can fork <strong><a href="http://github.com/victa/path-menu">the source</a></strong> on github !</p>  
         <p><a href="https://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="_victa">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></p>
         <hr />
         <p>Follow <a href="http://twitter.com/_victa">me</a> on Twitter! And ask any questions you want or send comments.</p>   
-        <p><small><strong>Edit:</strong> I updated the generated code manually (without Sass) but only for the demonstration. Now, It's works in Firefox.</small></p>
+        <p><small><strong>Edit 07/27/12:</strong> I updated the generated code using Sass 3.2. Now, It works for every browser supporting css3 animations.</small></p>
     </section>    
     
     <input type="checkbox" id="menu" class="menuControl" checked="checked">  <!-- Hidden -->
@@ -36,6 +37,7 @@
             <button class="circle">&#10006;</button>
         </div>
     </label>  
+
     <ul class="items">
       <li>&#9733;</li>
       <li>&#9733;</li>
